@@ -7,19 +7,21 @@ namespace MinimalApi
     {
         public AccessMysqlite(Context context):base(context) { }
         public override void addEmail(int idUtente, NEmail email)
-        {
+         {
+            email.utenteId = idUtente;
             context.nemail.Add(email);
             context.SaveChanges();
         }
 
         public override async void addNumero(int idUtente, NTelefono numero)
         {
+            numero.utenteId = idUtente;
             context.ntelefono.Add(numero);
             context.SaveChanges();
         }
 
         public override async void addUtenti(Utente utente)
-        {
+        {  
             context.utente.Add(utente);
             context.SaveChanges();
         }
