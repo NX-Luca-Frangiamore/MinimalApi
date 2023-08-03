@@ -12,31 +12,31 @@ namespace MinimalApi
             context.SaveChanges();
         }
 
-        public override void addNumero(int idUtente, NTelefono numero)
+        public override async void addNumero(int idUtente, NTelefono numero)
         {
             context.ntelefono.Add(numero);
             context.SaveChanges();
         }
 
-        public override void addUtenti(Utente utente)
+        public override async void addUtenti(Utente utente)
         {
             context.utente.Add(utente);
             context.SaveChanges();
         }
 
-        public override Task<IEnumerable<NEmail>> getEmail(int idUtente)
+        public override async Task<IEnumerable<NEmail>> getEmail(int idUtente)
         {
-            throw new NotImplementedException();
+            return context.nemail.Where(x => x.utenteId == idUtente);
         }
 
-        public override Task<IEnumerable<NTelefono>> getNumero(int idUtente)
+        public override async Task<IEnumerable<NTelefono>> getNumero(int idUtente)
         {
-            throw new NotImplementedException();
+            return context.ntelefono.Where(x => x.utenteId == idUtente);
         }
 
-        public override Task<IEnumerable<Utente>> getUtenti()
+        public override async Task<IEnumerable<Utente>> getUtenti()
         {
-            throw new NotImplementedException();
+            return context.utente;
         }
     }
 }

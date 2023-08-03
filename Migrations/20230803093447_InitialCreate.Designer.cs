@@ -10,7 +10,7 @@ using MinimalApi.Model;
 namespace MinimalApi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230803083715_InitialCreate")]
+    [Migration("20230803093447_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

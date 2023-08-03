@@ -4,6 +4,8 @@
     {
         public int Id { get; set; }
         public string Email { get; set; }
+        
         public Utente utente { get; set; }
+        public int utenteId;
     }
 }
