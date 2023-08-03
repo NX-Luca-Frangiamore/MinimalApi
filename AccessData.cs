@@ -4,7 +4,7 @@ namespace MinimalApi
 {
     public abstract class AccessData
     {
-        readonly private Context context;
+        readonly protected Context context;
         public AccessData(Context context) { 
             this.context = context;
         }
