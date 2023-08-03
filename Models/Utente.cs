@@ -8,5 +8,9 @@
         public string indirizzo { get; set; }
         public ICollection<NTelefono> nTelefoni { get; set;}
         public ICollection<NEmail> nEmails { get; set; }
+        public override string ToString()
+        {
+            return $"nome {name}, cognome {cognome}, indirizzo {indirizzo}";
+        }
     }
 }
