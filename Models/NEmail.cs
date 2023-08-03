@@ -2,10 +2,10 @@
 {
     public class NEmail
     {
+       
         public int Id { get; set; }
-        public string Email { get; set; }
+        public string email { get; set; }
         
-        public Utente utente { get; set; }
-        public int utenteId;
+        public int utenteId { get; set; }
     }
 }
