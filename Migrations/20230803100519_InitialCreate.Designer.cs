@@ -10,7 +10,7 @@ using MinimalApi.Model;
 namespace MinimalApi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230803093447_InitialCreate")]
+    [Migration("20230803100519_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -69,7 +69,6 @@ namespace MinimalApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("indirizzo")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("name")

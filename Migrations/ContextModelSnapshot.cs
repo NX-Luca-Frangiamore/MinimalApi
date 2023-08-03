@@ -66,7 +66,6 @@ namespace MinimalApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("indirizzo")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("name")

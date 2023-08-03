@@ -18,7 +18,7 @@ namespace MinimalApi.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     name = table.Column<string>(type: "TEXT", nullable: false),
                     cognome = table.Column<string>(type: "TEXT", nullable: false),
-                    indirizzo = table.Column<string>(type: "TEXT", nullable: false)
+                    indirizzo = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
