@@ -1,4 +1,6 @@
-﻿using MinimalApi.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using MinimalApi.Model;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MinimalApi
@@ -39,6 +41,13 @@ namespace MinimalApi
         public override async Task<IEnumerable<Utente>> getUtenti()
         {
             return context.utente;
+        }
+
+        public override void resetDati()
+        {
+            context.utente.ExecuteDeleteAsync();
+            context.nemail.ExecuteDeleteAsync();
+            context.ntelefono.ExecuteDeleteAsync();
         }
     }
 }

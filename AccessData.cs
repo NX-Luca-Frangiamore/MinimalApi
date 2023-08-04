@@ -15,6 +15,7 @@ namespace MinimalApi
         abstract public void addUtenti(Utente utente);
         abstract public void addNumero(int idUtente, NTelefono numero);
         abstract public void addEmail(int idUtente,NEmail email);
+        abstract public void resetDati();
 
     }
 }
