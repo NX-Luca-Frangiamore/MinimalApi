@@ -2,13 +2,16 @@
 
 namespace MinimalApi.Controllers
 {
-    [Route("/")]
+   
     [ApiController]
-    public abstract class IController : Controller
+    [Route("opt")]
+    public class IController : Controller
     {
         protected AccessData dati;
         public IController(AccessData dati) { this.dati = dati; }
-
+      
+       
+        [HttpDelete]
         [Route("Reset")]
         public void reset()
         {
