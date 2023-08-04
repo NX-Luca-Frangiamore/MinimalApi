@@ -10,7 +10,7 @@ using MinimalApi.Model;
 namespace MinimalApi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230803100519_InitialCreate")]
+    [Migration("20230804083158_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,16 +25,14 @@ namespace MinimalApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("utenteid")
+                    b.Property<int>("utenteId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("utenteid");
 
                     b.ToTable("nemail");
                 });
@@ -53,8 +51,6 @@ namespace MinimalApi.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("utenteId");
-
                     b.ToTable("ntelefono");
                 });
 
@@ -71,42 +67,13 @@ namespace MinimalApi.Migrations
                     b.Property<string>("indirizzo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("name")
+                    b.Property<string>("nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("id");
 
                     b.ToTable("utente");
-                });
-
-            modelBuilder.Entity("MinimalApi.Model.NEmail", b =>
-                {
-                    b.HasOne("MinimalApi.Model.Utente", "utente")
-                        .WithMany("nEmails")
-                        .HasForeignKey("utenteid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("utente");
-                });
-
-            modelBuilder.Entity("MinimalApi.Model.NTelefono", b =>
-                {
-                    b.HasOne("MinimalApi.Model.Utente", "utente")
-                        .WithMany("nTelefoni")
-                        .HasForeignKey("utenteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("utente");
-                });
-
-            modelBuilder.Entity("MinimalApi.Model.Utente", b =>
-                {
-                    b.Navigation("nEmails");
-
-                    b.Navigation("nTelefoni");
                 });
 #pragma warning restore 612, 618
         }

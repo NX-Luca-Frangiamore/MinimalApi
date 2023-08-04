@@ -48,6 +48,7 @@ namespace MinimalApi
             context.utente.ExecuteDeleteAsync();
             context.nemail.ExecuteDeleteAsync();
             context.ntelefono.ExecuteDeleteAsync();
+            context.SaveChanges();
         }
     }
 }

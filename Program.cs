@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MinimalApi;
+using MinimalApi.Controllers;
 using MinimalApi.Model;
 
 var builder = WebApplication.CreateBuilder(args);
