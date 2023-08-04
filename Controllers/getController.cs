@@ -21,7 +21,7 @@ namespace MinimalApi.Controllers
 
         }
         [HttpGet]
-        [Route("Utente")]
+        [Route("Utenti")]
         public async Task<IEnumerable<Utente>> getUtenti()
         {
             return dati.getUtenti().Result;
@@ -33,7 +33,7 @@ namespace MinimalApi.Controllers
             return dati.getEmail(idUtente).Result;
         }
         [HttpGet]
-        [Route("Telefono")]
+        [Route("Telefoni")]
         public async Task<IEnumerable<NTelefono>> getTelefono(int idUtente)
         {
             return dati.getNumero(idUtente).Result; 
