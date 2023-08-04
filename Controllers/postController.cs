@@ -9,7 +9,14 @@ namespace MinimalApi.Controllers
     public class postController : IController
     {
         public postController(AccessData dati) : base(dati) { }
-        
+        public string Index()
+        {
+            return @"End Point disponibili:
+                    /Utente(_nome,_cognome,_indirizzo)
+                    /Email(_uteneId,_email)
+                    /Telefono(_utenteId,_numero)
+                    ";
+        }
         [HttpPost]
         [Route("Utente")]
         public async void addUtenti(string _nome,string _cognome,string _indirizzo)
@@ -18,15 +25,15 @@ namespace MinimalApi.Controllers
         }
         [HttpPost]
         [Route("Email")]
-        public async void addEmail(string _email,int _utenteId)
+        public async void addEmail(int _utenteId,string _email)
         {
             dati.addEmail(_utenteId,new NEmail { email=_email});
         }
         [HttpPost]
         [Route("Telefono")]
-        public async void addTelefono(int idUtente, int _numero)
+        public async void addTelefono(int utenteId, int _numero)
         {
-             dati.addNumero(idUtente, new NTelefono { numero = _numero });
+             dati.addNumero(utenteId, new NTelefono { numero = _numero });
         }
     }
 }

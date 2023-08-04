@@ -11,14 +11,13 @@ namespace MinimalApi.Controllers
     {
      
         public getController(AccessData dati):base(dati){ }
-        public async void Index()
+        public  string Index()
         {
-            dati.addUtenti(new Utente { nome = "luca", cognome = "frangiamore", indirizzo = "123" });
-            dati.addUtenti(new Utente { nome = "peier", cognome = "gttg", indirizzo = "12233" });
-            dati.addEmail(2, new NEmail { email = "perit@.com" });
-            dati.addEmail(1, new NEmail { email = "lucafr434aa@.com" });
-            dati.addNumero(1, new NTelefono { numero = 12343 });
-
+            return @"End Point disponibili:
+                    /Utenti
+                    /Email 
+                    /Telefoni 
+                    ";
         }
         [HttpGet]
         [Route("Utenti")]
