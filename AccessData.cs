@@ -8,9 +8,9 @@ namespace MinimalApi
         public AccessData(Context context) { 
             this.context = context;
         }
-        abstract public Task<IEnumerable<Utente>> getUtenti();
-        abstract public Task<IEnumerable<NTelefono>> getNumero(int idUtente);
-        abstract public Task<IEnumerable<NEmail>> getEmail(int idUtente);
+        abstract public Task<IQueryable<Utente>> getUtenti();
+        abstract public Task<IQueryable<NTelefono>> getNumero(int idUtente);
+        abstract public Task<IQueryable<NEmail>> getEmail(int idUtente);
 
         abstract public void addUtenti(Utente utente);
         abstract public void addNumero(int idUtente, NTelefono numero);

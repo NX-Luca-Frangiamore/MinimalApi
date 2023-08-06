@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MinimalApi.Model;
+using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MinimalApi
@@ -12,13 +13,15 @@ namespace MinimalApi
          {
             email.utenteId = idUtente;
             context.nemail.Add(email);
+            context.utente.Find(idUtente).emails.Add(email);
             context.SaveChanges();
         }
 
-        public override async void addNumero(int idUtente, NTelefono numero)
+        public override async void addNumero(int idUtente, NTelefono telefono)
         {
-            numero.utenteId = idUtente;
-            context.ntelefono.Add(numero);
+            telefono.utenteId = idUtente;
+            context.ntelefono.Add(telefono);
+            context.utente.Find(idUtente).telefoni.Add(telefono);
             context.SaveChanges();
         }
 
@@ -28,19 +31,21 @@ namespace MinimalApi
             context.SaveChanges();
         }
 
-        public override async Task<IEnumerable<NEmail>> getEmail(int idUtente)
+        public override async Task<IQueryable<NEmail>> getEmail(int idUtente)
         {
-            return context.nemail.Where(x => x.utenteId == idUtente);
+            //  return context.nemail.Where(x => x.utenteId == idUtente);
+            return context.utente.Include(u => u.emails).Where(x => x.id == idUtente).SelectMany(x => x.emails);
         }
 
-        public override async Task<IEnumerable<NTelefono>> getNumero(int idUtente)
+        public override async Task<IQueryable<NTelefono>> getNumero(int idUtente)
         {
-            return context.ntelefono.Where(x => x.utenteId == idUtente);
+            //    return context.ntelefono.Where(x => x.utenteId == idUtente);
+            return context.utente.Include(u=>u.telefoni).Where(x=>x.id==idUtente).SelectMany(x=>x.telefoni);
         }
 
-        public override async Task<IEnumerable<Utente>> getUtenti()
+        public override async Task<IQueryable<Utente>> getUtenti()
         {
-            return context.utente;
+            return context.utente.Include(u=>u.emails).Include(u=>u.telefoni);
         }
 
         public override void resetDati()
