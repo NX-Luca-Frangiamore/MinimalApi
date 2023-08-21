@@ -43,6 +43,11 @@ namespace MinimalApi
             return context.utente.Include(u=>u.telefoni).Where(x=>x.id==idUtente).SelectMany(x=>x.telefoni);
         }
 
+        public override async Task<Utente> getUtente(string nome, string cognome)
+        {
+            return context.utente.Where(x =>( x.nome == nome) && (x.cognome == cognome)).FirstOrDefault();
+        }
+
         public override async Task<IQueryable<Utente>> getUtenti()
         {
             return context.utente.Include(u=>u.emails).Include(u=>u.telefoni);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.Features;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using MinimalApi.Model;
@@ -26,6 +27,7 @@ namespace MinimalApi.Controllers
             return dati.getUtenti().Result;
         }
         [HttpGet]
+        [Authorize]
         [Route("Email")]
         public async Task<IEnumerable<NEmail>> getEmail(int idUtente)
         {

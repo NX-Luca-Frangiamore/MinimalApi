@@ -9,6 +9,8 @@ namespace MinimalApi
             this.context = context;
         }
         abstract public Task<IQueryable<Utente>> getUtenti();
+        abstract public Task<Utente> getUtente(string nome,string cognome);
+
         abstract public Task<IQueryable<NTelefono>> getNumero(int idUtente);
         abstract public Task<IQueryable<NEmail>> getEmail(int idUtente);
 
