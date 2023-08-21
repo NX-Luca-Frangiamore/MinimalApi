@@ -9,6 +9,7 @@ builder.Services.AddDbContext<Context>(options => options.UseLazyLoadingProxies(
 builder.Services.AddScoped<AccessData, AccessMysqlite>();
 builder.Services.AddControllers();
 var app = builder.Build();
+
 app.MapGet("/Prova", () => "Hello World!");
 app.MapControllers();
 
