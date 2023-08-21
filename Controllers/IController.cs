@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MinimalApi.Services;
 
 namespace MinimalApi.Controllers
 {
-   
+
     [ApiController]
     [Route("opt")]
-    public class IController : Controller
+    public abstract class  IController : Controller
     {
-        protected AccessData dati;
-        public IController(AccessData dati) { this.dati = dati; }
+        protected IAccessData dati;
+        public IController(IAccessData dati) { this.dati = dati; }
       
        
         [HttpDelete]
