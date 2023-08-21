@@ -4,13 +4,13 @@ using MinimalApi.Model;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace MinimalApi
+namespace MinimalApi.Services
 {
-    public class AccessMysqlite : AccessData
+    public class AccessMysqlite : IAccessData
     {
-        public AccessMysqlite(Context context):base(context) { }
+        public AccessMysqlite(Context context) : base(context) { }
         public override void addEmail(int idUtente, NEmail email)
-         {
+        {
             email.utenteId = idUtente;
             context.nemail.Add(email);
             context.utente.Find(idUtente).emails.Add(email);
@@ -26,7 +26,7 @@ namespace MinimalApi
         }
 
         public override async void addUtenti(Utente utente)
-        {  
+        {
             context.utente.Add(utente);
             context.SaveChanges();
         }
@@ -40,17 +40,17 @@ namespace MinimalApi
         public override async Task<IQueryable<NTelefono>> getNumero(int idUtente)
         {
             //    return context.ntelefono.Where(x => x.utenteId == idUtente);
-            return context.utente.Include(u=>u.telefoni).Where(x=>x.id==idUtente).SelectMany(x=>x.telefoni);
+            return context.utente.Include(u => u.telefoni).Where(x => x.id == idUtente).SelectMany(x => x.telefoni);
         }
 
         public override async Task<Utente> getUtente(string nome, string cognome)
         {
-            return context.utente.Where(x =>( x.nome == nome) && (x.cognome == cognome)).FirstOrDefault();
+            return context.utente.Where(x => x.nome == nome && x.cognome == cognome).FirstOrDefault();
         }
 
         public override async Task<IQueryable<Utente>> getUtenti()
         {
-            return context.utente.Include(u=>u.emails).Include(u=>u.telefoni);
+            return context.utente.Include(u => u.emails).Include(u => u.telefoni);
         }
 
         public override void resetDati()

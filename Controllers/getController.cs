@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using MinimalApi.Model;
+using MinimalApi.Services;
 
 namespace MinimalApi.Controllers
 {
@@ -11,7 +12,7 @@ namespace MinimalApi.Controllers
     public class getController : IController
     {
      
-        public getController(AccessData dati):base(dati){ }
+        public getController(IAccessData dati):base(dati){ }
         public  string Index()
         {
             return @"End Point disponibili:

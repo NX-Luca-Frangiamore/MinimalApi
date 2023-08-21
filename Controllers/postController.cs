@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MinimalApi.Model;
+using MinimalApi.Services;
 
 namespace MinimalApi.Controllers
 {
@@ -8,7 +9,7 @@ namespace MinimalApi.Controllers
   
     public class postController : IController
     {
-        public postController(AccessData dati) : base(dati) { }
+        public postController(IAccessData dati) : base(dati) { }
         public string Index()
         {
             return @"End Point disponibili:
